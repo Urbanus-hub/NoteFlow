@@ -20,10 +20,11 @@ export const formatFullDate = (date: Date): string =>
   });
 
 /**
- * Get greeting based on time of day
+ * Get greeting based on current time of day
  */
-export const getGreeting = (date: Date): string => {
-  const hours = date.getHours();
+export const getGreeting = (): string => {
+  const now = new Date();
+  const hours = now.getHours();
 
   if (hours < 12) {
     return "Good Morning";

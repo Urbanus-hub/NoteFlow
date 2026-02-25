@@ -33,6 +33,7 @@ export default function Index() {
   const initialDates = generateDates(120); // Generate 120 days for infinite scroll
   const [dates, setDates] = useState(initialDates);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  console.log(selectedDate);
   const tasks: Boolean = false;
   const today = new Date();
   const flatListRef = useRef<FlatList>(null);
@@ -103,7 +104,7 @@ export default function Index() {
       <ThemedView style={[styles.container, { marginTop: 10 }]}>
         <ThemedView style={{ gap: 4 }}>
           <ThemedText title={true} style={{ fontSize: 24 }}>
-            {getGreeting(selectedDate)} , Urbanus
+            {getGreeting()} , Urbanus
           </ThemedText>
           <ThemedText title={true} style={{ fontSize: 24 }}>
             👋
@@ -489,15 +490,13 @@ export default function Index() {
                     fontWeight: "600",
                   }}
                 >
-                  ALERT
+                  REMINDER
                 </Text>
               </Pressable>
             </View>
           </ThemedView>
         </ThemedView>
       )}
-
-      
     </SafeAreaView>
   );
 }

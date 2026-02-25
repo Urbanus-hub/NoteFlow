@@ -72,13 +72,13 @@ const HomePage = () => {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="settings"
         options={{
           headerShown: false,
-          title: "PROFILE",
+          title: "SETTINGS",
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons
-              name={focused ? "person-circle" : "person-circle-outline"}
+              name={focused ? "settings" : "settings-outline"}
               color={color}
               size={size}
             />

@@ -23,7 +23,7 @@ export default function Note() {
     >
 
       <ThemedView>
-       <Text/>
+         <Text>Welcome , to note page</Text>
       </ThemedView>
       
       
