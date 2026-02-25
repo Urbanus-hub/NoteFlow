@@ -79,6 +79,7 @@ export default function Settings() {
       style={{
         flex: 1,
         backgroundColor: theme.background.default,
+        height:"100%"
        
         
       }}

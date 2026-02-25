@@ -17,6 +17,10 @@ const colors = {
       link: "#2563EB", // Blue for links (matches primary)
     },
     border: "#E2E8F0", // Light grey borders
+    search:{
+      text:"#1E293B",
+      background:"#F1F5F9"
+    }
   },
   dark: {
     background: {
@@ -35,6 +39,10 @@ const colors = {
       link: "#3B82F6", // Bright blue for text links
     },
     border: "#1E293B", // Subtle border for dark theme
+    search:{
+      text:"#FFFFFF",
+      background:"#1E293B"
+    }
   },
 };
 
