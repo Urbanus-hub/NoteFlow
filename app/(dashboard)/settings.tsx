@@ -1,26 +1,23 @@
 import ThemedText from "@/components/ThemedText";
+import ThemedView from "@/components/ThemedView";
 import colors from "@/constants/colors";
-import { ThemeContext } from "@/contexts/ThemeContext";
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
-import { useContext } from "react";
 import {
+  ColorSchemeName,
   Pressable,
   ScrollView,
   StyleSheet,
   Switch,
   Text,
+  useColorScheme,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Settings() {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    return null;
-  }
-  const { colorScheme, setColorScheme, toggleColorScheme } = context;
-  const theme = colors[colorScheme];
+  const colorScheme: ColorSchemeName = useColorScheme();
+  const theme = colors[colorScheme ?? "light"];
 
   const SettingRow = ({ icon, label, action, chevron = false }: any) => (
     <Pressable
@@ -79,14 +76,17 @@ export default function Settings() {
       style={{
         flex: 1,
         backgroundColor: theme.background.default,
-        height:"100%"
-       
-        
+        height: "100%",
       }}
     >
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{ paddingHorizontal: 20, flex: 1 ,marginBottom:-47}}
+        style={{
+          paddingHorizontal: 20,
+          flex: 1,
+          marginBottom: -47,
+          backgroundColor: theme.background.default,
+        }}
       >
         {/* Header */}
         <ThemedText title={true} style={{ fontSize: 28, marginVertical: 20 }}>
@@ -94,7 +94,7 @@ export default function Settings() {
         </ThemedText>
 
         {/* Profile Section */}
-        <View
+        <ThemedView
           style={[
             styles.profileCard,
             {
@@ -107,14 +107,14 @@ export default function Settings() {
             source={require("@/assets/images/icon.png")}
             style={styles.profileImage}
           />
-          <View style={{ flex: 1 }}>
+          <ThemedView style={{ flex: 1 }}>
             <ThemedText title={true} style={{ fontSize: 16 }}>
               Alex Rivers
             </ThemedText>
             <ThemedText style={{ fontSize: 12, color: theme.text.secondary }}>
               Pro Member • iCloud Active
             </ThemedText>
-          </View>
+          </ThemedView>
           <Pressable
             style={[
               styles.editButton,
@@ -123,7 +123,7 @@ export default function Settings() {
           >
             <Ionicons name="pencil" size={16} color={theme.primary.main} />
           </Pressable>
-        </View>
+        </ThemedView>
 
         {/* PREFERENCES Section */}
         <ThemedText
@@ -138,7 +138,7 @@ export default function Settings() {
         >
           Preferences
         </ThemedText>
-        <View
+        <ThemedView
           style={[
             styles.section,
             {
@@ -150,8 +150,8 @@ export default function Settings() {
           <ToggleSetting
             icon="sunny"
             label="Light Mode"
-            value={null}
-            onToggle={() =>(null)}
+            value={colorScheme === "light"}
+            onToggle={() => {}}
           />
           <SettingRow
             icon="palette"
@@ -165,7 +165,7 @@ export default function Settings() {
             action={() => {}}
             chevron={true}
           />
-        </View>
+        </ThemedView>
 
         {/* NOTIFICATIONS Section */}
         <ThemedText
@@ -180,7 +180,7 @@ export default function Settings() {
         >
           Notifications
         </ThemedText>
-        <View
+        <ThemedView
           style={[
             styles.section,
             {
@@ -201,7 +201,7 @@ export default function Settings() {
             value={false}
             onToggle={() => {}}
           />
-        </View>
+        </ThemedView>
 
         {/* ACCOUNT & DATA Section */}
         <ThemedText
@@ -216,7 +216,7 @@ export default function Settings() {
         >
           Account & Data
         </ThemedText>
-        <View
+        <ThemedView
           style={[
             styles.section,
             {
@@ -237,7 +237,7 @@ export default function Settings() {
             action={() => {}}
             chevron={true}
           />
-        </View>
+        </ThemedView>
 
         {/* SIGN OUT Section */}
         <Pressable
